@@ -1,1 +1,1 @@
-module github.com/GolangLessons/Sso-Protobuf-Golang
+module github.com/Pashgunt/Sso-Protobuf-Golang
