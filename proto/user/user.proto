@@ -1,0 +1,67 @@
+syntax = "proto2";
+
+import "google/protobuf/empty.proto";
+import "role/role.proto";
+
+package user;
+
+option go_package = "pant.sso.v1;sso";
+
+service User{
+  rpc AddNewUser(AddNewUserRequest) returns(google.protobuf.Empty);
+  rpc RemoveUser(RemoveUserRequest) returns(RemoveUserResponse);
+  rpc UpdateUser(UpdateUserRequest) returns(UpdateUserResponse);
+  rpc UserList(UserListRequest) returns(UserListResponse);
+}
+
+message UserFilter{
+  repeated string uuids = 1;
+  repeated string roleUuids = 2;
+  repeated string names = 3;
+  optional uint32 isActual = 4;
+}
+
+message AddNewUserRequest{
+  required string email = 1;
+  required string password = 2;
+  required string roleUuid = 3;
+  optional uint32 isActual = 4;
+}
+
+message RemoveUserRequest{
+  repeated string uuids = 1;
+  optional UserFilter filters = 2;
+}
+
+message RemoveUserResponse{
+  optional string status = 1;
+  required UserListItemResponse user = 2;
+}
+
+message UpdateUserRequest{
+  map<string, AddNewUserRequest> data = 1;
+}
+
+message UpdateUserResponse{
+  optional string status = 1;
+  map<string, UserListItemResponse> items = 2;
+}
+
+message UserListRequest{
+  required uint64 startFrom = 1;
+  required uint64 pageSize = 2;
+  optional UserFilter filter = 3;
+}
+
+message UserListItemResponse{
+  required string uuid = 1;
+  required string email = 2;
+  required uint32 isActual = 3;
+  optional string createdAt = 4;
+  repeated role.RoleListItemResponse roles = 5;
+}
+
+message UserListResponse{
+  required uint64 totalCount = 1;
+  repeated UserListItemResponse items = 2;
+}

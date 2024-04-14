@@ -4,7 +4,7 @@
 // - protoc             v4.25.2
 // source: sso/sso.proto
 
-package pant_sso_v1
+package sso
 
 import (
 	context "context"

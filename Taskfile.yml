@@ -1,0 +1,42 @@
+version: '3'
+
+tasks:
+  generate_sso:
+    cmds:
+      - protoc -I proto proto/sso/sso.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+      - echo "End build sso proto file"
+    aliases:
+      - sso
+  generate_app:
+    cmds:
+      - protoc -I proto proto/app/app.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+      - echo "End build app proto file"
+    aliases:
+      - app
+  generate_permission:
+    cmds:
+      - protoc -I proto proto/permission/permission.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+      - echo "End build permission proto file"
+    aliases:
+      - permission
+  generate_role:
+    cmds:
+      - protoc -I proto proto/role/role.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+      - echo "End build role proto file"
+    aliases:
+      - role
+  generate_user:
+    cmds:
+      - protoc -I proto proto/user/user.proto --go_out=./gen/go --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative
+      - echo "End build user proto file"
+    aliases:
+      - user
+  generate_all:
+    cmds:
+      - echo "Start build all proto files"
+      - task: sso
+      - task: app
+      - task: permission
+      - task: role
+      - task: user
+      - echo "End build all proto files"

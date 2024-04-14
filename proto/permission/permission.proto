@@ -1,0 +1,65 @@
+syntax = "proto2";
+
+import "google/protobuf/empty.proto";
+
+package permission;
+
+option go_package = "pant.sso.v1;sso";
+
+service Permission{
+  rpc AddNewPermission(AddNewPermissionRequest) returns(google.protobuf.Empty);
+  rpc RemovePermission(RemovePermissionRequest) returns(RemovePermissionResponse);
+  rpc UpdatePermission(UpdatePermissionRequest) returns(UpdatePermissionResponse);
+  rpc PermissionList(PermissionListRequest) returns(PermissionListResponse);
+}
+
+message AddNewPermissionRequest{
+  required string name = 1;
+  map<string, string> settings = 2;
+  optional uint32 isActual = 3;
+}
+
+message PermissionFilter{
+  repeated string uuids = 1;
+  repeated string names = 2;
+  map<string, string> settings = 3;
+  optional uint32 isActual = 4;
+}
+
+message RemovePermissionRequest{
+  repeated string uuids = 1;
+  optional PermissionFilter filters = 2;
+}
+
+message RemovePermissionResponse{
+  optional string status = 1;
+  repeated PermissionListItemResponse items = 2;
+}
+
+message UpdatePermissionRequest{
+  map<string, AddNewPermissionRequest> data = 1;
+}
+
+message UpdatePermissionResponse{
+  optional string status = 1;
+  map<string, PermissionListItemResponse> items = 2;
+}
+
+message PermissionListRequest{
+  required uint64 startFrom = 1;
+  required uint64 pageSize = 2;
+  optional PermissionFilter filter = 3;
+}
+
+message PermissionListItemResponse{
+  required string uuid = 1;
+  required string name = 2;
+  required string settings = 3;
+  required uint32 isActual = 4;
+  optional string createdAt = 5;
+}
+
+message PermissionListResponse{
+  required uint64 totalCount = 1;
+  repeated PermissionListItemResponse items = 2;
+}

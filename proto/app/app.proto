@@ -1,0 +1,65 @@
+syntax = "proto2";
+
+import "google/protobuf/empty.proto";
+
+package app;
+
+option go_package = "pant.sso.v1;sso";
+
+service App{
+  rpc RegisterApp(RegisterAppRequest) returns(google.protobuf.Empty);
+  rpc RemoveApp(RemoveAppRequest) returns(RemoveAppResponse);
+  rpc UpdateApp(UpdateAppRequest) returns(UpdateAppResponse);
+  rpc AppList(AppListRequest) returns(AppListResponse);
+}
+
+message RegisterAppRequest{
+  required string name = 2;
+  optional string secret = 3;
+  optional string isActual = 4;
+}
+
+message RemoveAppRequest{
+  repeated string uuids = 1;
+  optional AppListFiler filters = 2;
+}
+
+message RemoveAppResponse{
+  optional string status = 1;
+  repeated AppListItemResponse items = 2;
+}
+
+message AppListFiler{
+  repeated string uuids = 1;
+  repeated string names = 2;
+  repeated string secrets = 3;
+  optional uint32 isActual = 4;
+}
+
+message AppListItemResponse{
+  required string uuid = 1;
+  required string name = 2;
+  optional string secret = 3;
+  required uint32 isActual = 4;
+  optional string createdAt = 5;
+}
+
+message AppListRequest{
+  required uint64 startFrom = 1;
+  required uint64 pageSize = 2;
+  optional AppListFiler filter = 3;
+}
+
+message AppListResponse{
+  required uint64 totalCount = 1;
+  repeated AppListItemResponse items = 2;
+}
+
+message UpdateAppRequest{
+  map<string, RegisterAppRequest> data = 1;
+}
+
+message UpdateAppResponse{
+  optional string status = 1;
+  map<string, AppListItemResponse> items = 2;
+}
