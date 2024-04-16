@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 import "role/role.proto";
@@ -18,24 +18,24 @@ message UserFilter{
   repeated string uuids = 1;
   repeated string roleUuids = 2;
   repeated string names = 3;
-  optional uint32 isActual = 4;
+  uint32 isActual = 4;
 }
 
 message AddNewUserRequest{
-  required string email = 1;
-  required string password = 2;
-  required string roleUuid = 3;
-  optional uint32 isActual = 4;
+  string email = 1;
+  string password = 2;
+  string roleUuid = 3;
+  uint32 isActual = 4;
 }
 
 message RemoveUserRequest{
   repeated string uuids = 1;
-  optional UserFilter filters = 2;
+  UserFilter filters = 2;
 }
 
 message RemoveUserResponse{
-  optional string status = 1;
-  required UserListItemResponse user = 2;
+  string status = 1;
+  UserListItemResponse user = 2;
 }
 
 message UpdateUserRequest{
@@ -43,25 +43,25 @@ message UpdateUserRequest{
 }
 
 message UpdateUserResponse{
-  optional string status = 1;
+  string status = 1;
   map<string, UserListItemResponse> items = 2;
 }
 
 message UserListRequest{
-  required uint64 startFrom = 1;
-  required uint64 pageSize = 2;
-  optional UserFilter filter = 3;
+  uint64 startFrom = 1;
+  uint64 pageSize = 2;
+  UserFilter filter = 3;
 }
 
 message UserListItemResponse{
-  required string uuid = 1;
-  required string email = 2;
-  required uint32 isActual = 3;
-  optional string createdAt = 4;
+  string uuid = 1;
+  string email = 2;
+  uint32 isActual = 3;
+  string createdAt = 4;
   repeated role.RoleListItemResponse roles = 5;
 }
 
 message UserListResponse{
-  required uint64 totalCount = 1;
+  uint64 totalCount = 1;
   repeated UserListItemResponse items = 2;
 }

@@ -26,9 +26,9 @@ type AddNewPermissionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name     *string           `protobuf:"bytes,1,req,name=name" json:"name,omitempty"`
-	Settings map[string]string `protobuf:"bytes,2,rep,name=settings" json:"settings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	IsActual *uint32           `protobuf:"varint,3,opt,name=isActual" json:"isActual,omitempty"`
+	Name     string            `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Settings map[string]string `protobuf:"bytes,2,rep,name=settings,proto3" json:"settings,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	IsActual uint32            `protobuf:"varint,3,opt,name=isActual,proto3" json:"isActual,omitempty"`
 }
 
 func (x *AddNewPermissionRequest) Reset() {
@@ -64,8 +64,8 @@ func (*AddNewPermissionRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *AddNewPermissionRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
@@ -78,8 +78,8 @@ func (x *AddNewPermissionRequest) GetSettings() map[string]string {
 }
 
 func (x *AddNewPermissionRequest) GetIsActual() uint32 {
-	if x != nil && x.IsActual != nil {
-		return *x.IsActual
+	if x != nil {
+		return x.IsActual
 	}
 	return 0
 }
@@ -89,10 +89,10 @@ type PermissionFilter struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuids    []string          `protobuf:"bytes,1,rep,name=uuids" json:"uuids,omitempty"`
-	Names    []string          `protobuf:"bytes,2,rep,name=names" json:"names,omitempty"`
-	Settings map[string]string `protobuf:"bytes,3,rep,name=settings" json:"settings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	IsActual *uint32           `protobuf:"varint,4,opt,name=isActual" json:"isActual,omitempty"`
+	Uuids    []string          `protobuf:"bytes,1,rep,name=uuids,proto3" json:"uuids,omitempty"`
+	Names    []string          `protobuf:"bytes,2,rep,name=names,proto3" json:"names,omitempty"`
+	Settings map[string]string `protobuf:"bytes,3,rep,name=settings,proto3" json:"settings,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	IsActual uint32            `protobuf:"varint,4,opt,name=isActual,proto3" json:"isActual,omitempty"`
 }
 
 func (x *PermissionFilter) Reset() {
@@ -149,8 +149,8 @@ func (x *PermissionFilter) GetSettings() map[string]string {
 }
 
 func (x *PermissionFilter) GetIsActual() uint32 {
-	if x != nil && x.IsActual != nil {
-		return *x.IsActual
+	if x != nil {
+		return x.IsActual
 	}
 	return 0
 }
@@ -160,8 +160,8 @@ type RemovePermissionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuids   []string          `protobuf:"bytes,1,rep,name=uuids" json:"uuids,omitempty"`
-	Filters *PermissionFilter `protobuf:"bytes,2,opt,name=filters" json:"filters,omitempty"`
+	Uuids   []string          `protobuf:"bytes,1,rep,name=uuids,proto3" json:"uuids,omitempty"`
+	Filters *PermissionFilter `protobuf:"bytes,2,opt,name=filters,proto3" json:"filters,omitempty"`
 }
 
 func (x *RemovePermissionRequest) Reset() {
@@ -215,8 +215,8 @@ type RemovePermissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status *string                       `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Items  []*PermissionListItemResponse `protobuf:"bytes,2,rep,name=items" json:"items,omitempty"`
+	Status string                        `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	Items  []*PermissionListItemResponse `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 }
 
 func (x *RemovePermissionResponse) Reset() {
@@ -252,8 +252,8 @@ func (*RemovePermissionResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *RemovePermissionResponse) GetStatus() string {
-	if x != nil && x.Status != nil {
-		return *x.Status
+	if x != nil {
+		return x.Status
 	}
 	return ""
 }
@@ -270,7 +270,7 @@ type UpdatePermissionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Data map[string]*AddNewPermissionRequest `protobuf:"bytes,1,rep,name=data" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Data map[string]*AddNewPermissionRequest `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *UpdatePermissionRequest) Reset() {
@@ -317,8 +317,8 @@ type UpdatePermissionResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status *string                                `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Items  map[string]*PermissionListItemResponse `protobuf:"bytes,2,rep,name=items" json:"items,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Status string                                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	Items  map[string]*PermissionListItemResponse `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *UpdatePermissionResponse) Reset() {
@@ -354,8 +354,8 @@ func (*UpdatePermissionResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *UpdatePermissionResponse) GetStatus() string {
-	if x != nil && x.Status != nil {
-		return *x.Status
+	if x != nil {
+		return x.Status
 	}
 	return ""
 }
@@ -372,9 +372,9 @@ type PermissionListRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartFrom *uint64           `protobuf:"varint,1,req,name=startFrom" json:"startFrom,omitempty"`
-	PageSize  *uint64           `protobuf:"varint,2,req,name=pageSize" json:"pageSize,omitempty"`
-	Filter    *PermissionFilter `protobuf:"bytes,3,opt,name=filter" json:"filter,omitempty"`
+	StartFrom uint64            `protobuf:"varint,1,opt,name=startFrom,proto3" json:"startFrom,omitempty"`
+	PageSize  uint64            `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	Filter    *PermissionFilter `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
 func (x *PermissionListRequest) Reset() {
@@ -410,15 +410,15 @@ func (*PermissionListRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *PermissionListRequest) GetStartFrom() uint64 {
-	if x != nil && x.StartFrom != nil {
-		return *x.StartFrom
+	if x != nil {
+		return x.StartFrom
 	}
 	return 0
 }
 
 func (x *PermissionListRequest) GetPageSize() uint64 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
+	if x != nil {
+		return x.PageSize
 	}
 	return 0
 }
@@ -435,11 +435,11 @@ type PermissionListItemResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string `protobuf:"bytes,1,req,name=uuid" json:"uuid,omitempty"`
-	Name      *string `protobuf:"bytes,2,req,name=name" json:"name,omitempty"`
-	Settings  *string `protobuf:"bytes,3,req,name=settings" json:"settings,omitempty"`
-	IsActual  *uint32 `protobuf:"varint,4,req,name=isActual" json:"isActual,omitempty"`
-	CreatedAt *string `protobuf:"bytes,5,opt,name=createdAt" json:"createdAt,omitempty"`
+	Uuid      string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Settings  string `protobuf:"bytes,3,opt,name=settings,proto3" json:"settings,omitempty"`
+	IsActual  uint32 `protobuf:"varint,4,opt,name=isActual,proto3" json:"isActual,omitempty"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 }
 
 func (x *PermissionListItemResponse) Reset() {
@@ -475,36 +475,36 @@ func (*PermissionListItemResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *PermissionListItemResponse) GetUuid() string {
-	if x != nil && x.Uuid != nil {
-		return *x.Uuid
+	if x != nil {
+		return x.Uuid
 	}
 	return ""
 }
 
 func (x *PermissionListItemResponse) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
 
 func (x *PermissionListItemResponse) GetSettings() string {
-	if x != nil && x.Settings != nil {
-		return *x.Settings
+	if x != nil {
+		return x.Settings
 	}
 	return ""
 }
 
 func (x *PermissionListItemResponse) GetIsActual() uint32 {
-	if x != nil && x.IsActual != nil {
-		return *x.IsActual
+	if x != nil {
+		return x.IsActual
 	}
 	return 0
 }
 
 func (x *PermissionListItemResponse) GetCreatedAt() string {
-	if x != nil && x.CreatedAt != nil {
-		return *x.CreatedAt
+	if x != nil {
+		return x.CreatedAt
 	}
 	return ""
 }
@@ -514,8 +514,8 @@ type PermissionListResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TotalCount *uint64                       `protobuf:"varint,1,req,name=totalCount" json:"totalCount,omitempty"`
-	Items      []*PermissionListItemResponse `protobuf:"bytes,2,rep,name=items" json:"items,omitempty"`
+	TotalCount uint64                        `protobuf:"varint,1,opt,name=totalCount,proto3" json:"totalCount,omitempty"`
+	Items      []*PermissionListItemResponse `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 }
 
 func (x *PermissionListResponse) Reset() {
@@ -551,8 +551,8 @@ func (*PermissionListResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *PermissionListResponse) GetTotalCount() uint64 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
+	if x != nil {
+		return x.TotalCount
 	}
 	return 0
 }
@@ -573,7 +573,7 @@ var file_permission_permission_proto_rawDesc = []byte{
 	0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xd5, 0x01, 0x0a, 0x17, 0x41, 0x64, 0x64, 0x4e, 0x65,
 	0x77, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x02, 0x28, 0x09,
+	0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x4d, 0x0a, 0x08, 0x73, 0x65, 0x74, 0x74, 0x69, 0x6e,
 	0x67, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x31, 0x2e, 0x70, 0x65, 0x72, 0x6d, 0x69,
 	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x2e, 0x41, 0x64, 0x64, 0x4e, 0x65, 0x77, 0x50, 0x65, 0x72, 0x6d,
@@ -641,25 +641,25 @@ var file_permission_permission_proto_rawDesc = []byte{
 	0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x87, 0x01, 0x0a, 0x15, 0x50, 0x65, 0x72, 0x6d, 0x69,
 	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x12, 0x1c, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x46, 0x72, 0x6f, 0x6d, 0x18, 0x01, 0x20,
-	0x02, 0x28, 0x04, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x46, 0x72, 0x6f, 0x6d, 0x12, 0x1a,
-	0x0a, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x02, 0x28, 0x04,
+	0x01, 0x28, 0x04, 0x52, 0x09, 0x73, 0x74, 0x61, 0x72, 0x74, 0x46, 0x72, 0x6f, 0x6d, 0x12, 0x1a,
+	0x0a, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04,
 	0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x34, 0x0a, 0x06, 0x66, 0x69,
 	0x6c, 0x74, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x70, 0x65, 0x72,
 	0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x2e, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69,
 	0x6f, 0x6e, 0x46, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72,
 	0x22, 0x9a, 0x01, 0x0a, 0x1a, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x4c,
 	0x69, 0x73, 0x74, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x12, 0x0a, 0x04, 0x75, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x02, 0x28, 0x09, 0x52, 0x04, 0x75,
-	0x75, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x02, 0x28,
+	0x12, 0x0a, 0x04, 0x75, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75,
+	0x75, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x65, 0x74, 0x74, 0x69,
-	0x6e, 0x67, 0x73, 0x18, 0x03, 0x20, 0x02, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x74, 0x74, 0x69,
+	0x6e, 0x67, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x65, 0x74, 0x74, 0x69,
 	0x6e, 0x67, 0x73, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x18,
-	0x04, 0x20, 0x02, 0x28, 0x0d, 0x52, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x12,
+	0x04, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x12,
 	0x1c, 0x0a, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x05, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x76, 0x0a,
 	0x16, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x4c, 0x69, 0x73, 0x74, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c,
-	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x02, 0x28, 0x04, 0x52, 0x0a, 0x74, 0x6f, 0x74,
+	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0a, 0x74, 0x6f, 0x74,
 	0x61, 0x6c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x3c, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73,
 	0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x26, 0x2e, 0x70, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73,
 	0x69, 0x6f, 0x6e, 0x2e, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x4c, 0x69,
@@ -688,7 +688,8 @@ var file_permission_permission_proto_rawDesc = []byte{
 	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x22, 0x2e, 0x70, 0x65, 0x72, 0x6d, 0x69,
 	0x73, 0x73, 0x69, 0x6f, 0x6e, 0x2e, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e,
 	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x11, 0x5a, 0x0f,
-	0x70, 0x61, 0x6e, 0x74, 0x2e, 0x73, 0x73, 0x6f, 0x2e, 0x76, 0x31, 0x3b, 0x73, 0x73, 0x6f,
+	0x70, 0x61, 0x6e, 0x74, 0x2e, 0x73, 0x73, 0x6f, 0x2e, 0x76, 0x31, 0x3b, 0x73, 0x73, 0x6f, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

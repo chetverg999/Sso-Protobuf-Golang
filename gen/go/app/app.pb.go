@@ -26,9 +26,9 @@ type RegisterAppRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name     *string `protobuf:"bytes,2,req,name=name" json:"name,omitempty"`
-	Secret   *string `protobuf:"bytes,3,opt,name=secret" json:"secret,omitempty"`
-	IsActual *string `protobuf:"bytes,4,opt,name=isActual" json:"isActual,omitempty"`
+	Name     string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Secret   string `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty"`
+	IsActual string `protobuf:"bytes,4,opt,name=isActual,proto3" json:"isActual,omitempty"`
 }
 
 func (x *RegisterAppRequest) Reset() {
@@ -64,22 +64,22 @@ func (*RegisterAppRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *RegisterAppRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
 
 func (x *RegisterAppRequest) GetSecret() string {
-	if x != nil && x.Secret != nil {
-		return *x.Secret
+	if x != nil {
+		return x.Secret
 	}
 	return ""
 }
 
 func (x *RegisterAppRequest) GetIsActual() string {
-	if x != nil && x.IsActual != nil {
-		return *x.IsActual
+	if x != nil {
+		return x.IsActual
 	}
 	return ""
 }
@@ -89,8 +89,8 @@ type RemoveAppRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuids   []string      `protobuf:"bytes,1,rep,name=uuids" json:"uuids,omitempty"`
-	Filters *AppListFiler `protobuf:"bytes,2,opt,name=filters" json:"filters,omitempty"`
+	Uuids   []string      `protobuf:"bytes,1,rep,name=uuids,proto3" json:"uuids,omitempty"`
+	Filters *AppListFiler `protobuf:"bytes,2,opt,name=filters,proto3" json:"filters,omitempty"`
 }
 
 func (x *RemoveAppRequest) Reset() {
@@ -144,8 +144,8 @@ type RemoveAppResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status *string                `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Items  []*AppListItemResponse `protobuf:"bytes,2,rep,name=items" json:"items,omitempty"`
+	Status string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	Items  []*AppListItemResponse `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 }
 
 func (x *RemoveAppResponse) Reset() {
@@ -181,8 +181,8 @@ func (*RemoveAppResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *RemoveAppResponse) GetStatus() string {
-	if x != nil && x.Status != nil {
-		return *x.Status
+	if x != nil {
+		return x.Status
 	}
 	return ""
 }
@@ -199,10 +199,10 @@ type AppListFiler struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuids    []string `protobuf:"bytes,1,rep,name=uuids" json:"uuids,omitempty"`
-	Names    []string `protobuf:"bytes,2,rep,name=names" json:"names,omitempty"`
-	Secrets  []string `protobuf:"bytes,3,rep,name=secrets" json:"secrets,omitempty"`
-	IsActual *uint32  `protobuf:"varint,4,opt,name=isActual" json:"isActual,omitempty"`
+	Uuids    []string `protobuf:"bytes,1,rep,name=uuids,proto3" json:"uuids,omitempty"`
+	Names    []string `protobuf:"bytes,2,rep,name=names,proto3" json:"names,omitempty"`
+	Secrets  []string `protobuf:"bytes,3,rep,name=secrets,proto3" json:"secrets,omitempty"`
+	IsActual uint32   `protobuf:"varint,4,opt,name=isActual,proto3" json:"isActual,omitempty"`
 }
 
 func (x *AppListFiler) Reset() {
@@ -259,8 +259,8 @@ func (x *AppListFiler) GetSecrets() []string {
 }
 
 func (x *AppListFiler) GetIsActual() uint32 {
-	if x != nil && x.IsActual != nil {
-		return *x.IsActual
+	if x != nil {
+		return x.IsActual
 	}
 	return 0
 }
@@ -270,11 +270,11 @@ type AppListItemResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      *string `protobuf:"bytes,1,req,name=uuid" json:"uuid,omitempty"`
-	Name      *string `protobuf:"bytes,2,req,name=name" json:"name,omitempty"`
-	Secret    *string `protobuf:"bytes,3,opt,name=secret" json:"secret,omitempty"`
-	IsActual  *uint32 `protobuf:"varint,4,req,name=isActual" json:"isActual,omitempty"`
-	CreatedAt *string `protobuf:"bytes,5,opt,name=createdAt" json:"createdAt,omitempty"`
+	Uuid      string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Secret    string `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty"`
+	IsActual  uint32 `protobuf:"varint,4,opt,name=isActual,proto3" json:"isActual,omitempty"`
+	CreatedAt string `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 }
 
 func (x *AppListItemResponse) Reset() {
@@ -310,36 +310,36 @@ func (*AppListItemResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *AppListItemResponse) GetUuid() string {
-	if x != nil && x.Uuid != nil {
-		return *x.Uuid
+	if x != nil {
+		return x.Uuid
 	}
 	return ""
 }
 
 func (x *AppListItemResponse) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
 
 func (x *AppListItemResponse) GetSecret() string {
-	if x != nil && x.Secret != nil {
-		return *x.Secret
+	if x != nil {
+		return x.Secret
 	}
 	return ""
 }
 
 func (x *AppListItemResponse) GetIsActual() uint32 {
-	if x != nil && x.IsActual != nil {
-		return *x.IsActual
+	if x != nil {
+		return x.IsActual
 	}
 	return 0
 }
 
 func (x *AppListItemResponse) GetCreatedAt() string {
-	if x != nil && x.CreatedAt != nil {
-		return *x.CreatedAt
+	if x != nil {
+		return x.CreatedAt
 	}
 	return ""
 }
@@ -349,9 +349,9 @@ type AppListRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StartFrom *uint64       `protobuf:"varint,1,req,name=startFrom" json:"startFrom,omitempty"`
-	PageSize  *uint64       `protobuf:"varint,2,req,name=pageSize" json:"pageSize,omitempty"`
-	Filter    *AppListFiler `protobuf:"bytes,3,opt,name=filter" json:"filter,omitempty"`
+	StartFrom uint64        `protobuf:"varint,1,opt,name=startFrom,proto3" json:"startFrom,omitempty"`
+	PageSize  uint64        `protobuf:"varint,2,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
+	Filter    *AppListFiler `protobuf:"bytes,3,opt,name=filter,proto3" json:"filter,omitempty"`
 }
 
 func (x *AppListRequest) Reset() {
@@ -387,15 +387,15 @@ func (*AppListRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *AppListRequest) GetStartFrom() uint64 {
-	if x != nil && x.StartFrom != nil {
-		return *x.StartFrom
+	if x != nil {
+		return x.StartFrom
 	}
 	return 0
 }
 
 func (x *AppListRequest) GetPageSize() uint64 {
-	if x != nil && x.PageSize != nil {
-		return *x.PageSize
+	if x != nil {
+		return x.PageSize
 	}
 	return 0
 }
@@ -412,8 +412,8 @@ type AppListResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	TotalCount *uint64                `protobuf:"varint,1,req,name=totalCount" json:"totalCount,omitempty"`
-	Items      []*AppListItemResponse `protobuf:"bytes,2,rep,name=items" json:"items,omitempty"`
+	TotalCount uint64                 `protobuf:"varint,1,opt,name=totalCount,proto3" json:"totalCount,omitempty"`
+	Items      []*AppListItemResponse `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty"`
 }
 
 func (x *AppListResponse) Reset() {
@@ -449,8 +449,8 @@ func (*AppListResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *AppListResponse) GetTotalCount() uint64 {
-	if x != nil && x.TotalCount != nil {
-		return *x.TotalCount
+	if x != nil {
+		return x.TotalCount
 	}
 	return 0
 }
@@ -467,7 +467,7 @@ type UpdateAppRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Data map[string]*RegisterAppRequest `protobuf:"bytes,1,rep,name=data" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Data map[string]*RegisterAppRequest `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *UpdateAppRequest) Reset() {
@@ -514,8 +514,8 @@ type UpdateAppResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Status *string                         `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
-	Items  map[string]*AppListItemResponse `protobuf:"bytes,2,rep,name=items" json:"items,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Status string                          `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	Items  map[string]*AppListItemResponse `protobuf:"bytes,2,rep,name=items,proto3" json:"items,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *UpdateAppResponse) Reset() {
@@ -551,8 +551,8 @@ func (*UpdateAppResponse) Descriptor() ([]byte, []int) {
 }
 
 func (x *UpdateAppResponse) GetStatus() string {
-	if x != nil && x.Status != nil {
-		return *x.Status
+	if x != nil {
+		return x.Status
 	}
 	return ""
 }
@@ -572,7 +572,7 @@ var file_app_app_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x22, 0x5c, 0x0a, 0x12, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x41, 0x70, 0x70,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x02, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x73,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x73,
 	0x65, 0x63, 0x72, 0x65, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x65, 0x63,
 	0x72, 0x65, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x18,
 	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x22,
@@ -596,24 +596,24 @@ var file_app_app_proto_rawDesc = []byte{
 	0x63, 0x74, 0x75, 0x61, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x08, 0x69, 0x73, 0x41,
 	0x63, 0x74, 0x75, 0x61, 0x6c, 0x22, 0x8f, 0x01, 0x0a, 0x13, 0x41, 0x70, 0x70, 0x4c, 0x69, 0x73,
 	0x74, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a,
-	0x04, 0x75, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x02, 0x28, 0x09, 0x52, 0x04, 0x75, 0x75, 0x69,
-	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x02, 0x28, 0x09, 0x52,
+	0x04, 0x75, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x75, 0x69,
+	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x18,
 	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x12, 0x1a, 0x0a,
-	0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x18, 0x04, 0x20, 0x02, 0x28, 0x0d, 0x52,
+	0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0d, 0x52,
 	0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x75, 0x61, 0x6c, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x72, 0x65,
 	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x72,
 	0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x75, 0x0a, 0x0e, 0x41, 0x70, 0x70, 0x4c, 0x69,
 	0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x73, 0x74, 0x61,
-	0x72, 0x74, 0x46, 0x72, 0x6f, 0x6d, 0x18, 0x01, 0x20, 0x02, 0x28, 0x04, 0x52, 0x09, 0x73, 0x74,
+	0x72, 0x74, 0x46, 0x72, 0x6f, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x09, 0x73, 0x74,
 	0x61, 0x72, 0x74, 0x46, 0x72, 0x6f, 0x6d, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53,
-	0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x02, 0x28, 0x04, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53,
+	0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53,
 	0x69, 0x7a, 0x65, 0x12, 0x29, 0x0a, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x18, 0x03, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x41, 0x70, 0x70, 0x4c, 0x69, 0x73,
 	0x74, 0x46, 0x69, 0x6c, 0x65, 0x72, 0x52, 0x06, 0x66, 0x69, 0x6c, 0x74, 0x65, 0x72, 0x22, 0x61,
 	0x0a, 0x0f, 0x41, 0x70, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
 	0x65, 0x12, 0x1e, 0x0a, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18,
-	0x01, 0x20, 0x02, 0x28, 0x04, 0x52, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x75, 0x6e,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0a, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x75, 0x6e,
 	0x74, 0x12, 0x2e, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x18, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x41, 0x70, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x49, 0x74,
 	0x65, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d,
@@ -655,7 +655,7 @@ var file_app_app_proto_rawDesc = []byte{
 	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x61, 0x70, 0x70, 0x2e, 0x41,
 	0x70, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x11,
 	0x5a, 0x0f, 0x70, 0x61, 0x6e, 0x74, 0x2e, 0x73, 0x73, 0x6f, 0x2e, 0x76, 0x31, 0x3b, 0x73, 0x73,
-	0x6f,
+	0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 import "permission/permission.proto";
@@ -17,22 +17,22 @@ service Role{
 message RoleFilter{
   repeated string uuids = 1;
   repeated string names = 2;
-  optional uint32 isActual = 3;
+  uint32 isActual = 3;
 }
 
 message AddNewRoleRequest{
-  required string name = 1;
-  optional uint32 isActual = 2;
+  string name = 1;
+  uint32 isActual = 2;
   repeated permission.PermissionListItemResponse permissions = 3;
 }
 
 message RemoveRoleRequest{
   repeated string uuids = 1;
-  optional RoleFilter filters = 2;
+  RoleFilter filters = 2;
 }
 
 message RemoveRoleResponse{
-  optional string status = 1;
+  string status = 1;
   repeated RoleListItemResponse items = 2;
 }
 
@@ -41,24 +41,24 @@ message UpdateRoleRequest{
 }
 
 message UpdateRoleResponse{
-  optional string status = 1;
+  string status = 1;
   map<string, RoleListItemResponse> items = 2;
 }
 
 message RoleListRequest{
-  required uint64 startFrom = 1;
-  required uint64 pageSize = 2;
-  optional RoleFilter filter = 3;
+  uint64 startFrom = 1;
+  uint64 pageSize = 2;
+  RoleFilter filter = 3;
 }
 
 message RoleListItemResponse{
-  required string uuid = 1;
-  required string name = 2;
-  required uint32 isActual = 3;
-  optional string createdAt = 4;
+  string uuid = 1;
+  string name = 2;
+  uint32 isActual = 3;
+  string createdAt = 4;
 }
 
 message RoleListResponse{
-  required uint64 totalCount = 1;
+  uint64 totalCount = 1;
   repeated RoleListItemResponse items = 2;
 }

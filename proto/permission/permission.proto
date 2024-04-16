@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
@@ -14,25 +14,25 @@ service Permission{
 }
 
 message AddNewPermissionRequest{
-  required string name = 1;
+  string name = 1;
   map<string, string> settings = 2;
-  optional uint32 isActual = 3;
+  uint32 isActual = 3;
 }
 
 message PermissionFilter{
   repeated string uuids = 1;
   repeated string names = 2;
   map<string, string> settings = 3;
-  optional uint32 isActual = 4;
+  uint32 isActual = 4;
 }
 
 message RemovePermissionRequest{
   repeated string uuids = 1;
-  optional PermissionFilter filters = 2;
+  PermissionFilter filters = 2;
 }
 
 message RemovePermissionResponse{
-  optional string status = 1;
+  string status = 1;
   repeated PermissionListItemResponse items = 2;
 }
 
@@ -41,25 +41,25 @@ message UpdatePermissionRequest{
 }
 
 message UpdatePermissionResponse{
-  optional string status = 1;
+  string status = 1;
   map<string, PermissionListItemResponse> items = 2;
 }
 
 message PermissionListRequest{
-  required uint64 startFrom = 1;
-  required uint64 pageSize = 2;
-  optional PermissionFilter filter = 3;
+  uint64 startFrom = 1;
+  uint64 pageSize = 2;
+  PermissionFilter filter = 3;
 }
 
 message PermissionListItemResponse{
-  required string uuid = 1;
-  required string name = 2;
-  required string settings = 3;
-  required uint32 isActual = 4;
-  optional string createdAt = 5;
+  string uuid = 1;
+  string name = 2;
+  string settings = 3;
+  uint32 isActual = 4;
+  string createdAt = 5;
 }
 
 message PermissionListResponse{
-  required uint64 totalCount = 1;
+  uint64 totalCount = 1;
   repeated PermissionListItemResponse items = 2;
 }

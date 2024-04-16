@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
@@ -14,18 +14,18 @@ service App{
 }
 
 message RegisterAppRequest{
-  required string name = 2;
-  optional string secret = 3;
-  optional string isActual = 4;
+  string name = 2;
+  string secret = 3;
+  string isActual = 4;
 }
 
 message RemoveAppRequest{
   repeated string uuids = 1;
-  optional AppListFiler filters = 2;
+  AppListFiler filters = 2;
 }
 
 message RemoveAppResponse{
-  optional string status = 1;
+  string status = 1;
   repeated AppListItemResponse items = 2;
 }
 
@@ -33,25 +33,25 @@ message AppListFiler{
   repeated string uuids = 1;
   repeated string names = 2;
   repeated string secrets = 3;
-  optional uint32 isActual = 4;
+  uint32 isActual = 4;
 }
 
 message AppListItemResponse{
-  required string uuid = 1;
-  required string name = 2;
-  optional string secret = 3;
-  required uint32 isActual = 4;
-  optional string createdAt = 5;
+  string uuid = 1;
+  string name = 2;
+  string secret = 3;
+  uint32 isActual = 4;
+  string createdAt = 5;
 }
 
 message AppListRequest{
-  required uint64 startFrom = 1;
-  required uint64 pageSize = 2;
-  optional AppListFiler filter = 3;
+  uint64 startFrom = 1;
+  uint64 pageSize = 2;
+  AppListFiler filter = 3;
 }
 
 message AppListResponse{
-  required uint64 totalCount = 1;
+  uint64 totalCount = 1;
   repeated AppListItemResponse items = 2;
 }
 
@@ -60,6 +60,6 @@ message UpdateAppRequest{
 }
 
 message UpdateAppResponse{
-  optional string status = 1;
+  string status = 1;
   map<string, AppListItemResponse> items = 2;
 }
