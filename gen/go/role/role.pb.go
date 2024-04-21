@@ -7,6 +7,7 @@
 package sso
 
 import (
+	sso "github.com/Pashgunt/Sso-Protobuf-Golang/gen/go/permission"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -91,7 +92,7 @@ type AddNewRoleRequest struct {
 
 	Name        string                        `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	IsActual    uint32                        `protobuf:"varint,2,opt,name=isActual,proto3" json:"isActual,omitempty"`
-	Permissions []*PermissionListItemResponse `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Permissions []*sso.PermissionListItemResponse `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 }
 
 func (x *AddNewRoleRequest) Reset() {
@@ -140,7 +141,7 @@ func (x *AddNewRoleRequest) GetIsActual() uint32 {
 	return 0
 }
 
-func (x *AddNewRoleRequest) GetPermissions() []*PermissionListItemResponse {
+func (x *AddNewRoleRequest) GetPermissions() []*sso.PermissionListItemResponse {
 	if x != nil {
 		return x.Permissions
 	}
@@ -671,7 +672,7 @@ var file_role_role_proto_goTypes = []interface{}{
 	(*RoleListResponse)(nil),           // 8: role.RoleListResponse
 	nil,                                // 9: role.UpdateRoleRequest.DataEntry
 	nil,                                // 10: role.UpdateRoleResponse.ItemsEntry
-	(*PermissionListItemResponse)(nil), // 11: permission.PermissionListItemResponse
+	(*sso.PermissionListItemResponse)(nil), // 11: permission.PermissionListItemResponse
 	(*emptypb.Empty)(nil),              // 12: google.protobuf.Empty
 }
 var file_role_role_proto_depIdxs = []int32{
@@ -700,11 +701,11 @@ var file_role_role_proto_depIdxs = []int32{
 }
 
 func init() { file_role_role_proto_init() }
-func file_role_role_proto_init() {
+func File_role_role_proto_init() {
 	if File_role_role_proto != nil {
 		return
 	}
-	file_permission_permission_proto_init()
+	sso.File_permission_permission_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_role_role_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RoleFilter); i {

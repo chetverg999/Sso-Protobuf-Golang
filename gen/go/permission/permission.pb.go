@@ -748,7 +748,7 @@ var file_permission_permission_proto_depIdxs = []int32{
 }
 
 func init() { file_permission_permission_proto_init() }
-func file_permission_permission_proto_init() {
+func File_permission_permission_proto_init() {
 	if File_permission_permission_proto != nil {
 		return
 	}

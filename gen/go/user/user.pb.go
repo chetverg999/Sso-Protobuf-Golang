@@ -7,6 +7,7 @@
 package sso
 
 import (
+	sso "github.com/Pashgunt/Sso-Protobuf-Golang/gen/go/role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -447,7 +448,7 @@ type UserListItemResponse struct {
 	Email     string                  `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	IsActual  uint32                  `protobuf:"varint,3,opt,name=isActual,proto3" json:"isActual,omitempty"`
 	CreatedAt string                  `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	Roles     []*RoleListItemResponse `protobuf:"bytes,5,rep,name=roles,proto3" json:"roles,omitempty"`
+	Roles     []*sso.RoleListItemResponse `protobuf:"bytes,5,rep,name=roles,proto3" json:"roles,omitempty"`
 }
 
 func (x *UserListItemResponse) Reset() {
@@ -510,7 +511,7 @@ func (x *UserListItemResponse) GetCreatedAt() string {
 	return ""
 }
 
-func (x *UserListItemResponse) GetRoles() []*RoleListItemResponse {
+func (x *UserListItemResponse) GetRoles() []*sso.RoleListItemResponse {
 	if x != nil {
 		return x.Roles
 	}
@@ -698,7 +699,7 @@ var file_user_user_proto_goTypes = []interface{}{
 	(*UserListResponse)(nil),     // 8: user.UserListResponse
 	nil,                          // 9: user.UpdateUserRequest.DataEntry
 	nil,                          // 10: user.UpdateUserResponse.ItemsEntry
-	(*RoleListItemResponse)(nil), // 11: role.RoleListItemResponse
+	(*sso.RoleListItemResponse)(nil), // 11: role.RoleListItemResponse
 	(*emptypb.Empty)(nil),        // 12: google.protobuf.Empty
 }
 var file_user_user_proto_depIdxs = []int32{
@@ -731,7 +732,7 @@ func file_user_user_proto_init() {
 	if File_user_user_proto != nil {
 		return
 	}
-	file_role_role_proto_init()
+	sso.File_role_role_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_user_user_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UserFilter); i {
