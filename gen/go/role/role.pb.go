@@ -700,12 +700,12 @@ var file_role_role_proto_depIdxs = []int32{
 	0,  // [0:9] is the sub-list for field type_name
 }
 
-func init() { file_role_role_proto_init() }
-func File_role_role_proto_init() {
+func Init() { file_role_role_proto_init() }
+func file_role_role_proto_init() {
 	if File_role_role_proto != nil {
 		return
 	}
-	sso.File_permission_permission_proto_init()
+	sso.Init()
 	if !protoimpl.UnsafeEnabled {
 		file_role_role_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RoleFilter); i {

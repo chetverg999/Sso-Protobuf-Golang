@@ -732,7 +732,7 @@ func file_user_user_proto_init() {
 	if File_user_user_proto != nil {
 		return
 	}
-	sso.File_role_role_proto_init()
+	sso.Init()
 	if !protoimpl.UnsafeEnabled {
 		file_user_user_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UserFilter); i {

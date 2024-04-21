@@ -747,8 +747,8 @@ var file_permission_permission_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_permission_permission_proto_init() }
-func File_permission_permission_proto_init() {
+func Init() { file_permission_permission_proto_init() }
+func file_permission_permission_proto_init() {
 	if File_permission_permission_proto != nil {
 		return
 	}
