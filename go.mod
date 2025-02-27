@@ -1,4 +1,4 @@
-module github.com/Pashgunt/Sso-Protobuf-Golang
+module github.com/chetverg999/Sso-Protobuf-Golang
 
 go 1.23.4
 
