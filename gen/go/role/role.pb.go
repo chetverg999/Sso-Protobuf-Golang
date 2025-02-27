@@ -7,7 +7,7 @@
 package sso
 
 import (
-	sso "github.com/Pashgunt/Sso-Protobuf-Golang/gen/go/permission"
+	sso "github.com/chetverg999/Sso-Protobuf-Golang/gen/go/permission"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -90,8 +90,8 @@ type AddNewRoleRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name        string                        `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	IsActual    uint32                        `protobuf:"varint,2,opt,name=isActual,proto3" json:"isActual,omitempty"`
+	Name        string                            `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	IsActual    uint32                            `protobuf:"varint,2,opt,name=isActual,proto3" json:"isActual,omitempty"`
 	Permissions []*sso.PermissionListItemResponse `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 }
 
@@ -661,19 +661,19 @@ func file_role_role_proto_rawDescGZIP() []byte {
 
 var file_role_role_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_role_role_proto_goTypes = []interface{}{
-	(*RoleFilter)(nil),                 // 0: role.RoleFilter
-	(*AddNewRoleRequest)(nil),          // 1: role.AddNewRoleRequest
-	(*RemoveRoleRequest)(nil),          // 2: role.RemoveRoleRequest
-	(*RemoveRoleResponse)(nil),         // 3: role.RemoveRoleResponse
-	(*UpdateRoleRequest)(nil),          // 4: role.UpdateRoleRequest
-	(*UpdateRoleResponse)(nil),         // 5: role.UpdateRoleResponse
-	(*RoleListRequest)(nil),            // 6: role.RoleListRequest
-	(*RoleListItemResponse)(nil),       // 7: role.RoleListItemResponse
-	(*RoleListResponse)(nil),           // 8: role.RoleListResponse
-	nil,                                // 9: role.UpdateRoleRequest.DataEntry
-	nil,                                // 10: role.UpdateRoleResponse.ItemsEntry
+	(*RoleFilter)(nil),                     // 0: role.RoleFilter
+	(*AddNewRoleRequest)(nil),              // 1: role.AddNewRoleRequest
+	(*RemoveRoleRequest)(nil),              // 2: role.RemoveRoleRequest
+	(*RemoveRoleResponse)(nil),             // 3: role.RemoveRoleResponse
+	(*UpdateRoleRequest)(nil),              // 4: role.UpdateRoleRequest
+	(*UpdateRoleResponse)(nil),             // 5: role.UpdateRoleResponse
+	(*RoleListRequest)(nil),                // 6: role.RoleListRequest
+	(*RoleListItemResponse)(nil),           // 7: role.RoleListItemResponse
+	(*RoleListResponse)(nil),               // 8: role.RoleListResponse
+	nil,                                    // 9: role.UpdateRoleRequest.DataEntry
+	nil,                                    // 10: role.UpdateRoleResponse.ItemsEntry
 	(*sso.PermissionListItemResponse)(nil), // 11: permission.PermissionListItemResponse
-	(*emptypb.Empty)(nil),              // 12: google.protobuf.Empty
+	(*emptypb.Empty)(nil),                  // 12: google.protobuf.Empty
 }
 var file_role_role_proto_depIdxs = []int32{
 	11, // 0: role.AddNewRoleRequest.permissions:type_name -> permission.PermissionListItemResponse

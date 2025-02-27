@@ -7,7 +7,7 @@
 package sso
 
 import (
-	sso "github.com/Pashgunt/Sso-Protobuf-Golang/gen/go/role"
+	sso "github.com/chetverg999/Sso-Protobuf-Golang/gen/go/role"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -444,10 +444,10 @@ type UserListItemResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uuid      string                  `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Email     string                  `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	IsActual  uint32                  `protobuf:"varint,3,opt,name=isActual,proto3" json:"isActual,omitempty"`
-	CreatedAt string                  `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	Uuid      string                      `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Email     string                      `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	IsActual  uint32                      `protobuf:"varint,3,opt,name=isActual,proto3" json:"isActual,omitempty"`
+	CreatedAt string                      `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	Roles     []*sso.RoleListItemResponse `protobuf:"bytes,5,rep,name=roles,proto3" json:"roles,omitempty"`
 }
 
@@ -688,19 +688,19 @@ func file_user_user_proto_rawDescGZIP() []byte {
 
 var file_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_user_user_proto_goTypes = []interface{}{
-	(*UserFilter)(nil),           // 0: user.UserFilter
-	(*AddNewUserRequest)(nil),    // 1: user.AddNewUserRequest
-	(*RemoveUserRequest)(nil),    // 2: user.RemoveUserRequest
-	(*RemoveUserResponse)(nil),   // 3: user.RemoveUserResponse
-	(*UpdateUserRequest)(nil),    // 4: user.UpdateUserRequest
-	(*UpdateUserResponse)(nil),   // 5: user.UpdateUserResponse
-	(*UserListRequest)(nil),      // 6: user.UserListRequest
-	(*UserListItemResponse)(nil), // 7: user.UserListItemResponse
-	(*UserListResponse)(nil),     // 8: user.UserListResponse
-	nil,                          // 9: user.UpdateUserRequest.DataEntry
-	nil,                          // 10: user.UpdateUserResponse.ItemsEntry
+	(*UserFilter)(nil),               // 0: user.UserFilter
+	(*AddNewUserRequest)(nil),        // 1: user.AddNewUserRequest
+	(*RemoveUserRequest)(nil),        // 2: user.RemoveUserRequest
+	(*RemoveUserResponse)(nil),       // 3: user.RemoveUserResponse
+	(*UpdateUserRequest)(nil),        // 4: user.UpdateUserRequest
+	(*UpdateUserResponse)(nil),       // 5: user.UpdateUserResponse
+	(*UserListRequest)(nil),          // 6: user.UserListRequest
+	(*UserListItemResponse)(nil),     // 7: user.UserListItemResponse
+	(*UserListResponse)(nil),         // 8: user.UserListResponse
+	nil,                              // 9: user.UpdateUserRequest.DataEntry
+	nil,                              // 10: user.UpdateUserResponse.ItemsEntry
 	(*sso.RoleListItemResponse)(nil), // 11: role.RoleListItemResponse
-	(*emptypb.Empty)(nil),        // 12: google.protobuf.Empty
+	(*emptypb.Empty)(nil),            // 12: google.protobuf.Empty
 }
 var file_user_user_proto_depIdxs = []int32{
 	0,  // 0: user.RemoveUserRequest.filters:type_name -> user.UserFilter
